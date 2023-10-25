@@ -1,0 +1,73 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: windows-latest
+
+variables:
+  buildConfiguration: 'Release'
+
+name: 1.0.$(rev:r)
+
+stages:
+  - stage: Build
+    displayName: Build
+    jobs:
+    - job: Build
+      steps :
+      - task: UseDotNet@2
+        displayName: 'Use .NET Core SDK 6.0'
+        inputs:
+          packageType: 'sdk'
+          version: '6.0.x'
+
+      - script: dotnet build --configuration $(BuildConfiguration)
+        displayName: Build backend
+
+
+  - stage: Tests
+    dependsOn: Build
+    displayName: tests
+    jobs:
+    - job: Tests
+      steps :
+      - script: dotnet test Tester/Tester.csproj --logger trx
+        displayName: dotnet test
+        
+        
+
+      - task: PublishTestResults@2
+        condition: succeededOrFailed()
+        inputs:
+          testRunner: VSTest
+          testResultsFiles: '**/*.trx'
+
+
+  - stage: Publish
+    dependsOn: Tests
+    displayName: Publish
+    jobs:
+    - job: Publish
+      steps :
+      - task: DotNetCoreCLI@2
+        displayName: 'NuGet pack'
+        inputs:
+          command: 'pack'
+          configuration: $(BuildConfiguration)
+          packagesToPack: 'WaterMarker/WaterMarker.csproj'
+          packDirectory: '$(Build.artifactStagingDirectory)'
+          versioningScheme: byBuildNumber 
+
+
+      - task: NuGetCommand@2
+        displayName: nuget push
+        inputs:
+          command: 'push'
+          packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg'
+          nuGetFeedType: 'external'
+          publishFeedCredentials: 'BaGet'

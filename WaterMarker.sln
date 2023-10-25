@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterMarker", "WaterMarker\WaterMarker.csproj", "{81E33CA7-50EB-4FF6-ABE0-2AC77B7CFA3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tester", "Tester\Tester.csproj", "{6DDE316C-5055-420D-A736-7148081E09C0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81E33CA7-50EB-4FF6-ABE0-2AC77B7CFA3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81E33CA7-50EB-4FF6-ABE0-2AC77B7CFA3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81E33CA7-50EB-4FF6-ABE0-2AC77B7CFA3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81E33CA7-50EB-4FF6-ABE0-2AC77B7CFA3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DDE316C-5055-420D-A736-7148081E09C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DDE316C-5055-420D-A736-7148081E09C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DDE316C-5055-420D-A736-7148081E09C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DDE316C-5055-420D-A736-7148081E09C0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {437F69B9-B80B-4EEC-B458-3B76665ABFA3}
+	EndGlobalSection
+EndGlobal
